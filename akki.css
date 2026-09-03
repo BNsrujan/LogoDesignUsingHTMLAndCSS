@@ -3,26 +3,41 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+/*
+  The whole mark is drawn in rem, so changing the root font-size scales it
+  proportionally without touching a single coordinate.
+  Artwork bounding box (measured): 117.25rem wide x 141.75rem tall.
+  62.5% (= 10px) stays as the fallback for browsers without min().
+*/
 :root{
     --bg-color:#00b6ff;
     --bg-background-hiding:#000000;
     font-size: 62.5%;
+    font-size: min(0.76vw, 0.63vh);
 }
-body{
-    background-color:rgb(0, 0, 0);
-    
+
 html{
-    font-size: 62.5%;
-    overflow-x:hidden ;
+    overflow: hidden;
 }
-    
+
+body{
+    background-color: rgb(0, 0, 0);
+    min-height: 100%;
+    overflow: hidden;
+}
+
 .akki{
     height:108rem ;
     width: 127rem;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    /*
+      The artwork is not centred inside .akki's own box (it spills 48rem below
+      it), so nudge the box until the *artwork* sits in the middle instead.
+    */
+    transform: translate(-50%,-50%) translate(4.625rem, -31.125rem);
     background-color: var(--bg-background-hiding);
     box-sizing: border-box;
 }
@@ -70,7 +85,6 @@ html{
     overflow: hidden;
     z-index: 1;
 }
-}
 
 .rightcenter{
     top: 8rem;
@@ -89,7 +103,7 @@ html{
     top: 85%;
     left: 44.5rem;
     transform: translate(-50%,-50%);
-    box-shadow: inset  -103px 0px 71px -79px #000000;
+    box-shadow: inset  -10.3rem 0rem 7.1rem -7.9rem #000000;
     background-color: var(--bg-color);
    
 }
@@ -99,7 +113,7 @@ html{
     width:10.6rem;
     bottom: -10.5rem;
     left: 66.4rem;
-    /* box-shadow: -50px 2px 50px -19px rgba(0,0,0,0.89); */
+    /* box-shadow: -5rem 0.2rem 5rem -1.9rem rgba(0,0,0,0.89); */
     background-color: var(--bg-color);
 }
 
@@ -128,7 +142,7 @@ html{
     bottom: -16.9rem;
     left: 47.7rem;
     transform: translate(-50%,-50%);
-    box-shadow: inset  -103px 0px 71px -79px #000000;
+    box-shadow: inset  -10.3rem 0rem 7.1rem -7.9rem #000000;
     background-color: var(--bg-color);z-index: -1;
 } 
 
@@ -163,7 +177,7 @@ html{
     width:10.1rem;
     top:0rem;
     left: 0.5rem;
-    box-shadow: inset  0px 94px 82px -79px #000000;
+    box-shadow: inset  0rem 9.4rem 8.2rem -7.9rem #000000;
     background-color:var(--bg-color);
 }
 .centerArrow_below_left{
@@ -171,7 +185,7 @@ html{
     width:14.1rem;
     top:-.5rem;
     right: -.2rem;
-    box-shadow: inset 0px 94px 82px -79px #000000;
+    box-shadow: inset 0rem 9.4rem 8.2rem -7.9rem #000000;
     background-color:var(--bg-color);
 }
 .centerArrow_below_hidd{
